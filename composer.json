@@ -1,0 +1,27 @@
+{
+    "name": "amillot/meeting-bundle",
+    "description": "Bundle that manage meeting.",
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "authors": [
+      {
+          "name": "Adrien MILLOT",
+          "email": "adrien.millot@gmail.com"
+      }
+    ],
+    "require": {
+        "php": "^7.3",
+        "symfony/http-kernel": "^5.0"
+    },
+    "require-dev": {},
+    "autoload": {
+        "psr-4": {
+            "amillot\\MeetingBundle\\": ""
+        }
+    },
+    "autoload-dev": {},
+    "config": {
+        "bin-dir": "bin",
+        "sort-packages": true
+    }
+}
