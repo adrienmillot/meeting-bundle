@@ -3,11 +3,14 @@
 namespace amillot\MeetingBundle\Entity;
 
 use amillot\MeetingBundle\Model\MeetingInterface;
+use amillot\MeetingBundle\Traits\SessionAware;
 use amillot\MeetingBundle\Traits\CollaboratorListAware;
 use amillot\MeetingBundle\Traits\ManagerListAware;
 
 abstract class AbstractMeeting implements MeetingInterface
 {
+    use SessionAware;
+
     use CollaboratorListAware {
         CollaboratorListAware::__construct as private __collaboratorListAwareConstruct;
     }

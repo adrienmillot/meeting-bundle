@@ -35,6 +35,11 @@
                 </inverse-join-columns>
             </join-table>
         </many-to-many>
+
+        <many-to-one field="session" target-entity="amillot\MeetingBundle\Entity\Session" inversed-by="meetings">
+            <cascade><cascade-all></cascade-all></cascade>
+            <join-column name="session_id" referenced-column-name="id" on-delete="CASCADE" />
+        </many-to-one>
     </mapped-superclass>
 
 </doctrine-mapping>
