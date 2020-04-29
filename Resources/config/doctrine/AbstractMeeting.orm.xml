@@ -7,6 +7,20 @@
         <id name="id" type="string" column="id">
             <generator strategy="UUID"/>
         </id>
+
+        <many-to-many field="collaborators" target-entity="amillot\MeetingBundle\Model\CollaboratorSubjectInterface">
+            <cascade>
+                <cascade-all/>
+            </cascade>
+            <join-table name="meeting_collaborators">
+                <join-columns>
+                    <join-column name="collaborator_id" referenced-column-name="id" />
+                </join-columns>
+                <inverse-join-columns>
+                    <join-column name="meeting_id" referenced-column-name="id" on-delete="CASCADE" />
+                </inverse-join-columns>
+            </join-table>
+        </many-to-many>
     </mapped-superclass>
 
 </doctrine-mapping>
