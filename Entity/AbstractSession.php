@@ -3,11 +3,12 @@
 namespace amillot\MeetingBundle\Entity;
 
 use amillot\MeetingBundle\Model\SessionInterface;
+use amillot\MeetingBundle\Traits\CampaignAware;
 use amillot\MeetingBundle\Traits\Periodable;
 
 abstract class AbstractSession implements SessionInterface
 {
-    use Periodable;
+    use CampaignAware, Periodable;
 
     protected $id;
 
