@@ -11,6 +11,7 @@
     ],
     "require": {
         "php": "^7.3",
+        "amillot/survey-bundle": "^0.0.1",
         "doctrine/doctrine-bundle": "^2.0",
         "doctrine/orm": "^2.7",
         "symfony/http-kernel": "^5.0"
