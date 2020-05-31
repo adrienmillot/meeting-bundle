@@ -1,0 +1,45 @@
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                          https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <mapped-superclass name="amillot\MeetingBundle\Entity\AbstractMeeting" repository-class="amillot\MeetingBundle\Repository\MeetingRepository">
+        <id name="id" type="string" column="id">
+            <generator strategy="UUID"/>
+        </id>
+
+        <many-to-many field="collaborators" target-entity="amillot\MeetingBundle\Model\CollaboratorSubjectInterface">
+            <cascade>
+                <cascade-all/>
+            </cascade>
+            <join-table name="meeting_collaborators">
+                <join-columns>
+                    <join-column name="collaborator_id" referenced-column-name="id" />
+                </join-columns>
+                <inverse-join-columns>
+                    <join-column name="meeting_id" referenced-column-name="id" on-delete="CASCADE" />
+                </inverse-join-columns>
+            </join-table>
+        </many-to-many>
+
+        <many-to-many field="managers" target-entity="amillot\MeetingBundle\Model\ManagerSubjectInterface">
+            <cascade>
+                <cascade-all/>
+            </cascade>
+            <join-table name="meeting_managers">
+                <join-columns>
+                    <join-column name="manager_id" referenced-column-name="id" />
+                </join-columns>
+                <inverse-join-columns>
+                    <join-column name="meeting_id" referenced-column-name="id" on-delete="CASCADE" />
+                </inverse-join-columns>
+            </join-table>
+        </many-to-many>
+
+        <many-to-one field="session" target-entity="amillot\MeetingBundle\Entity\Session" inversed-by="meetings">
+            <cascade><cascade-all></cascade-all></cascade>
+            <join-column name="session_id" referenced-column-name="id" on-delete="CASCADE" />
+        </many-to-one>
+    </mapped-superclass>
+
+</doctrine-mapping>
