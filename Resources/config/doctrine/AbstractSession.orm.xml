@@ -1,0 +1,21 @@
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                          https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <mapped-superclass name="amillot\MeetingBundle\Entity\AbstractSession" repository-class="amillot\MeetingBundle\Repository\SessionRepository">
+        <id name="id" type="string" column="id">
+            <generator strategy="UUID"/>
+        </id>
+
+        <field name="cycleId" column="cycle_id" type="integer" />
+        <field name="endedAt" column="ended_at" type="datetime" nullable="true" />
+        <field name="startedAt" column="started_at" type="datetime" nullable="true" />
+
+        <many-to-one field="campaign" target-entity="amillot\MeetingBundle\Entity\Campaign" inversed-by="sessions">
+            <cascade><cascade-all></cascade-all></cascade>
+            <join-column name="campaign_id" referenced-column-name="id" on-delete="CASCADE" />
+        </many-to-one>
+    </mapped-superclass>
+
+</doctrine-mapping>
